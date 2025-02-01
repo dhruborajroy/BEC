@@ -143,6 +143,6 @@ $html = '<style>
     body { transform: scale(0.95); transform-origin: top left; } 
 </style>' . $html;
 $mpdf->SetTitle('Notice Barisal Engineering College');
-// $mpdf->SetFooter('Developed By The Web divers');
+// $mpdf->SetFooter('Developed By Dhrubo Raj Roy');
 $mpdf->WriteHTML($html);
 $mpdf->output("../notice_files/".$file,'I');

@@ -3686,7 +3686,7 @@ button {
     .header .navbar .dropdown .dropdown-menu {
       padding: 20px 30px;
       z-index: 9999;
-      width: 400px; 
+      width: 500px; 
     }
       .header .navbar .dropdown .dropdown-menu li a {
         background: transparent;

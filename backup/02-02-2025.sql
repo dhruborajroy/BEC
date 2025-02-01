@@ -3,7 +3,7 @@
 -- Host: localhost	Database: school
 -- ------------------------------------------------------
 -- Server version 	10.4.32-MariaDB
--- Date: Sun, 02 Feb 2025 01:49:12 +0600
+-- Date: Sun, 02 Feb 2025 02:02:36 +0600
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -1352,4 +1352,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sun, 02 Feb 2025 01:49:12 +0600
+-- Dump completed on: Sun, 02 Feb 2025 02:02:36 +0600

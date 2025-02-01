@@ -59,7 +59,7 @@ if (!defined('SECURE_ACCESS')) {
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12 text-center">
-              <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index">The Web Divers</a> </p>
+              <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index" > Dhrubo Raj Roy </a> </p>
             </div>
           </div>
         </div>

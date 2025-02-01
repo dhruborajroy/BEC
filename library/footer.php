@@ -3,7 +3,7 @@
 <footer class="footer-wrap-layout1">
     <div class="copyright">© Copyrights <a href="http://bec.edu.bd" target="blank">Barishal Engineering College </a> 2018-<?php echo date('Y')?>.| P-1102 | V-1.1.2 |
         All
-        rights reserved. Developed by <a href="https://dhruborajroy.github.io/myPortfollioWebsite">The Web Divers</a></div>
+        rights reserved. Developed by <a href="index" > Dhrubo Raj Roy </a></div>
 </footer>
 <!-- Footer Area End Here -->
 </div>

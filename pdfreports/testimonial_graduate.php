@@ -44,7 +44,7 @@ if(mysqli_num_rows($result)>0){
         ]);
     
         $mpdf->SetTitle('TESTIMONIAL - ' . $student['name']);
-        $mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
+        $mpdf->SetFooter('<div style="text-align:center;">Developed By Dhrubo Raj Roy</div>');
     
         $html = '<table width="100%">'; 
         $html .= ' 
@@ -137,7 +137,7 @@ $all_mpdf = new \Mpdf\Mpdf([
     'margin_bottom' => 10,
 ]);
 $all_mpdf->SetTitle('All Testimonials - Barishal Engineering College');
-$all_mpdf->SetFooter('<div style="text-align:center;">Developed By The Web Divers</div>');
+$all_mpdf->SetFooter('<div style="text-align:center;">Developed By Dhrubo Raj Roy</div>');
 $all_mpdf->WriteHTML($all_testimonials_html);
 $all_mpdf->Output("../notice_files/ALL_TESTIMONIALS.pdf", 'I'); // Save the file
 mysqli_close($con);

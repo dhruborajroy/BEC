@@ -126,7 +126,7 @@ $mpdf=new \Mpdf\Mpdf([
 	'margin_bottom' => 10,
 ]);
 $mpdf->SetTitle('Notice Barisal Engineering College');
-$mpdf->SetFooter('Developed By The Web divers');
+$mpdf->SetFooter('Developed By Dhrubo Raj Roy');
 $mpdf->WriteHTML($html);
 // if($row['link']==""){
     $mpdf->output("../notice_files/".$file,'F');

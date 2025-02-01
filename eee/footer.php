@@ -3,11 +3,11 @@ if (!defined('SECURE_ACCESS')) {
   die("Direct access not allowed!");
 }?>
 <!--=================================Footer-->
-<footer class="space-pt bg-overlay-black-90 bg-holder footer mt-n5" style="background-image: url(../images/03.jpg);">
+<footer class="space-pt bg-overlay-black-90 bg-holder footer mt-n5" style="background-image: url(images/bg/01.jpg);">
   <div class="container pt-5">
     <div class="row pb-5 pb-lg-6 mb-lg-3">
       <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0 pr-lg-5">
-        <a href="index"><img style="background-color: white;" class="img-fluid mb-3 footer-logo" src="../images/bec-ce.png" alt=""></a>
+        <a href="index"><img style="background-color: white;" class="img-fluid mb-3 footer-logo" src="../images/bec-<?php echo $dept_id?>.png" alt=""></a>
         <p class="text-white">The best way is to develop and follow a plan. Start with your goals in mind and then work backward to develop the plan.</p>
         <h5 class="text-white mb-2 mb-sm-4">Follow Us</h5>
         <div class="social-icon social-icon-style-02">
@@ -59,7 +59,7 @@ if (!defined('SECURE_ACCESS')) {
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-12 text-center">
-          <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index" > Dhrubo Raj Roy </a> </p>
+          <p class="mb-0 text-white"> All Rights Reserved  ©Copyright. 2018-<?php echo date("Y")?>. Made with ❤️ by <a href="index" style="color:white;">Dhrubo Raj Roy - Civil(04) </a> </p>
         </div>
       </div>
     </div>
@@ -94,7 +94,4 @@ Footer-->
     <script src="../js/custom.js"></script>
 
   </body>
-
-
-<!-- Mirrored from themes.potenzaglobalsolutions.com/html/academic/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 05 Jan 2025 11:50:34 GMT -->
 </html>
