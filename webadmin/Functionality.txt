@@ -1,0 +1,21 @@
+https://library.greensoftbd.xyz/dashboard/index
+admin
+123456
+Functionality 
+    1. Book Category 
+    2. Stall Listing 
+    3. Quantity 
+    4. Book Request 
+    5. Reading room request 
+    6. Library Status 
+    7. QR code 
+    8. Request Email sending 
+    9. Issued email sending 
+    10. auto email notification 
+    11. E-book Functionality 
+    12. Counter 
+    13. Return Notification 
+    14. Graph of Monthly taken books
+    15. Lost
+    16. PDF 
+    17. Notice
