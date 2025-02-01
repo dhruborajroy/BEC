@@ -143,10 +143,10 @@ require('./inc/function.inc.php');
                       <!-- Dropdown Menu -->
                       <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="faculties.php">Faculty</a></li>
-                          <li><a class="dropdown-item" href="class-routine.php">Class Routine</a></li>
+                          <!-- <li><a class="dropdown-item" href="class-routine.php">Class Routine</a></li>
                           <li><a class="dropdown-item" href="syllabus.php">Syllabus</a></li>
                           <li><a class="dropdown-item" href="exam-schedule.php">Exam Schedule</a></li>
-                          <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li>
+                          <li><a class="dropdown-item" href="academic-calender.php">Academic Calender</a></li> -->
                       </ul>
                     </li>
                     <?php
