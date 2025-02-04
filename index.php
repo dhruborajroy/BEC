@@ -1,7 +1,7 @@
 <?php 
 define('SECURE_ACCESS', true);
 include("header.php");
-include("backup/index.php");
+// include("backup/index.php");
 ?>
 <!--=================================Banner -->
 <section class="banner position-ralative">
@@ -186,7 +186,7 @@ include("backup/index.php");
                         </div>
                         <div class="course-conten">
                            <h5 class="mb-3">
-                              <a target="_blank" href="dept/<?php echo strtolower($depts_lab_list_row['short_form'])?>"><?php echo $depts_lab_list_row['name']?></a>
+                              <a target="_blank" href="<?php echo strtolower($depts_lab_list_row['short_form'])?>"><?php echo $depts_lab_list_row['name']?></a>
                            </h5>
                         </div>
                      </div>

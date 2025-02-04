@@ -3,6 +3,9 @@ define('SECURE_ACCESS', true);
 session_start();
 require('../../inc/connection.inc.php');
 require('../../inc/function.inc.php');
+if(!isset($_SESSION[ 'USER_ID'])){
+  die;
+}
 $user_id=$_SESSION[ 'USER_ID'];
 ?>
 

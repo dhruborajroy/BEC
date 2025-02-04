@@ -59,8 +59,8 @@ isAdmin();
       <div class="navbar navbar-expand-md header-menu-one bg-light">
          <div class="nav-bar-header-one">
             <div class="header-logo">
-               <a href="index.php">
-               <img src="../images/logo.png" alt="logo" width="172px">
+               <a href="/"target="_blank">
+                  <img src="../images/logo.png" alt="logo" width="172px">
                </a>
             </div>
             <div class="toggle-button sidebar-toggle">
@@ -84,16 +84,7 @@ isAdmin();
          </div>
          <div class="header-main-menu collapse navbar-collapse" id="mobile-navbar">
             <ul class="navbar-nav">
-               <li class="navbar-item header-search-bar">
-                  <div class="input-group stylish-input-group">
-                     <span class="input-group-addon">
-                        <button type="submit">
-                           <!-- <span class="flaticon-search" aria-hidden="true"></span> -->
-                        </button>
-                     </span>
-                     <!-- <input type="text" class="form-control" placeholder="Find Something . . ."> -->
-                  </div>
-               </li>
+               
             </ul>
             <?php 
                $uid=$_SESSION['ADMIN_ID']; 
@@ -109,7 +100,7 @@ isAdmin();
                         <span>Admin</span>
                      </div>
                      <div class="admin-img">
-                        <img src="<?php //echo STUDENT_IMAGE.$row['image']?>" alt="Admin">
+                        <!-- <img src="<?php //echo STUDENT_IMAGE.$row['image']?>" alt="Admin"> -->
                      </div>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">

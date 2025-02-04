@@ -106,12 +106,13 @@
                         <div class="default-tab">
                           <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                                <a class="nav-item nav-link active show" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Bio</a>
                                 <a class="nav-item nav-link" id="nav-education-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-profile" aria-selected="false">Education</a>
                                 <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-contact" aria-selected="false">Experience</a>
                                 <a class="nav-item nav-link" id="nav-publications-tab" data-toggle="tab" href="#nav-publications" role="tab" aria-controls="nav-contact" aria-selected="false">Publications</a>
-                                <a class="nav-item nav-link" id="nav-scholarship_award-tab" data-toggle="tab" href="#nav-scholarship_award" role="tab" aria-controls="nav-contact" aria-selected="false">Acholarships & Awards</a>
-                                <a class="nav-item nav-link" id="nav-research-tab" data-toggle="tab" href="#nav-research" role="tab" aria-controls="nav-contact" aria-selected="false">Research</a>
+                                <a class="nav-item nav-link" id="nav-scholarship_award-tab" data-toggle="tab" href="#nav-scholarship_award" role="tab" aria-controls="nav-contact" aria-selected="false">Scholarships & Awards</a>
+                                <a class="nav-item nav-link" id="nav-research-tab" data-toggle="tab" href="#nav-research" role="tab" aria-controls="nav-contact" aria-selected="false">Professional Training</a>
+                                <!-- research named as Professional Training -->
                                 <a class="nav-item nav-link" id="nav-teaching_supervision-tab" data-toggle="tab" href="#nav-teaching_supervision" role="tab" aria-controls="nav-contact" aria-selected="false">Teaching & Supervision</a>
                             </div>
                           </nav>
@@ -156,7 +157,8 @@
                               </div>
                               <div class="tab-pane fade" id="nav-research" role="tabpanel" aria-labelledby="nav-research-tab">
                                  <div class="section-title mt-5">
-                                    <h4 class="title">Research</h4>
+                                    <h4 class="title">Professional Training</h4>
+                                    <!-- research named as Professional Training -->
                                  </div>
                                  <p><?php echo $row['research']?></p>
                               </div>
@@ -188,7 +190,7 @@
             </div>
             <div class="row">
                <?php
-                  $sql="SELECT * FROM `faculty` WHERE md5(id) != '$id'";
+                  $sql="SELECT * FROM `people` WHERE md5(id) != '$id' limit 4";
                   $res=mysqli_query($con,$sql); 
                   if(mysqli_num_rows($res)>0){
                     $i=1;        

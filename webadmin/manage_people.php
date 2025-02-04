@@ -61,26 +61,28 @@ define('SECURE_ACCESS', true);
        }
    }
    if(isset($_POST['submit'])){
-       $name = get_safe_value($_POST['name']);
-       $designation = get_safe_value($_POST['designation']);
-       $phone = get_safe_value($_POST['phone']);
-       $email = get_safe_value($_POST['email']);
-       $research_interest = get_safe_value($_POST['research_interest']);
-       $bio = get_safe_value($_POST['bio']);
-       $facebook = get_safe_value($_POST['facebook']);
-       $linked_in = get_safe_value($_POST['linked_in']);
-       $education = get_safe_value($_POST['education']);
-       $experience = get_safe_value($_POST['experience']);
-       $dept = get_safe_value($_POST['dept']);
-       $publication = get_safe_value($_POST['publication']);
-       $scholarship_award = get_safe_value($_POST['scholarship_award']);
-       $research = get_safe_value($_POST['research']);
-       $teaching_supervision = get_safe_value($_POST['teaching_supervision']);
-       $joined_at = get_safe_value($_POST['joined_at']);
-       $visibility = get_safe_value($_POST['visibility']);
-       $type = get_safe_value($_POST['type']);
-       $dept_head = isset($_POST['dept_head']) ? 1 : 0; 
-       $_SESSION['ADMIN_ID'];
+      $name = get_safe_value($_POST['name']);
+      $designation = get_safe_value($_POST['designation']);
+      $phone = get_safe_value($_POST['phone']);
+      $email = get_safe_value($_POST['email']);
+      $research_interest = get_safe_value($_POST['research_interest']);
+      $bio = get_safe_value($_POST['bio']);
+      $facebook = get_safe_value($_POST['facebook']);
+      $linked_in = get_safe_value($_POST['linked_in']);
+      $education = get_safe_value($_POST['education']);
+      $experience = get_safe_value($_POST['experience']);
+      $dept = get_safe_value($_POST['dept']);
+      $publication = get_safe_value($_POST['publication']);
+      $scholarship_award = get_safe_value($_POST['scholarship_award']);
+      $research = get_safe_value($_POST['research']);
+      $teaching_supervision = get_safe_value($_POST['teaching_supervision']);
+      $joined_at = get_safe_value($_POST['joined_at']);
+      $visibility = get_safe_value($_POST['visibility']);
+      $type = get_safe_value($_POST['type']);
+      $dept_head = isset($_POST['dept_head']) ? 1 : 0; 
+      $_SESSION['ADMIN_ID'];
+      $random_password=uniqid();
+      $password=password_hash($random_password,PASSWORD_DEFAULT);
        $added_on=time();
        if($id==''){
            $id=uniqid();
@@ -102,14 +104,15 @@ define('SECURE_ACCESS', true);
                    $image=time().'.jpg';
                    move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                            
-                   $sql = "INSERT INTO people (id, name,image, designation, phone, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility, dept_head,type, status) 
-                   VALUES ('$id','$name','$image', '$designation', '$phone', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', $dept_head, '$type',  '1')";
+                   $sql = "INSERT INTO people (id, name,image, designation, phone,password, email, research_interest, bio, facebook, linked_in, education, experience, publication, scholarship_award, research, teaching_supervision, joined_at, visibility,dept, dept_head,type, status) 
+                   VALUES ('$id','$name','$image', '$designation', '$phone','$password', '$email', '$research_interest', '$bio', '$facebook', '$linked_in', '$education', '$experience', '$publication', '$scholarship_award', '$research', '$teaching_supervision', '$joined_at', '$visibility', '$dept', $dept_head, '$type',  '1')";
                    if(mysqli_query($con,$sql)){
                        $_SESSION['TOASTR_MSG']=array(
                            'type'=>'success',
                            'body'=>'Data Inserted',
                            'title'=>'Success',
                        );
+                       send_email($email,"Your account has been created. Your password is <b>".$random_password." </b>. Please login and change your password.","Account Created");
                        redirect('people');
                    }else{
                        echo $sql;
@@ -138,7 +141,7 @@ define('SECURE_ACCESS', true);
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_FACULTY_IMAGE.$image);
                 $updated_on=time();
-                $sql = "UPDATE people SET name='$name',image='$image', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head, type='$type' WHERE id='$id'";
+                $sql = "UPDATE people SET name='$name',image='$image', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept='$dept', dept_head=$dept_head, type='$type' WHERE id='$id'";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
                         'type'=>'success',
@@ -152,7 +155,7 @@ define('SECURE_ACCESS', true);
             }
         }else{
             $updated_on=time();
-            $sql = "UPDATE people SET name='$name', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility', dept_head=$dept_head, type='$type' WHERE id='$id'";
+            $sql = "UPDATE people SET name='$name', designation='$designation', phone='$phone', email='$email', research_interest='$research_interest', bio='$bio', facebook='$facebook', linked_in='$linked_in', education='$education', experience='$experience', publication='$publication', scholarship_award='$scholarship_award', research='$research', teaching_supervision='$teaching_supervision', joined_at='$joined_at', visibility='$visibility',dept='$dept', dept_head=$dept_head, type='$type' WHERE id='$id'";
             if(mysqli_query($con,$sql)){
                 $_SESSION['TOASTR_MSG']=array(
                     'type'=>'success',
@@ -198,7 +201,28 @@ define('SECURE_ACCESS', true);
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="designation">Designation</label>
-               <input type="text" name="designation" id="designation" value="<?php echo htmlspecialchars($designation); ?>" class="form-control">
+                  <select class="form-control select2" name="designation">
+                     <option disabled selected>Select Designation </option>
+                     <?php
+                        $data = [
+                              'Professor'  => 'Professor',
+                              'Associate Professor'  => 'Associate Professor',
+                              'Assistant Professor'  => 'Assistant Professor',
+                              'Lecturer'  => 'Lecturer',
+                              'Officer'  => 'Officer',
+                              'Security Officer'  => 'Security Officer',
+                              'Others'  => 'Others',
+                        ];
+
+                        foreach ($data as $key => $val) {
+                              if ($key == $designation) {
+                                 echo "<option selected='selected' value='$key'>$val</option>";
+                              } else {
+                                 echo "<option value='$key'>$val</option>";
+                              }
+                        }
+                        ?>
+                  </select>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                <label for="phone">Phone</label>
@@ -279,7 +303,7 @@ define('SECURE_ACCESS', true);
                <textarea class="full_input" name="scholarship_award" id="scholarship_award" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($scholarship_award); ?></textarea>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 ">
-               <label for="research">Research</label>
+               <label for="research">Professional Training</label>
                <textarea class="full_input" name="research" id="research" cols="30" rows="5" class="form-control"><?php echo htmlspecialchars($research); ?></textarea>
             </div>
             <div class="col-12-xxxl col-lg-12 col-12 ">

@@ -35,8 +35,6 @@ if(mysqli_num_rows($res)>0){
                 <br>
                 '.ADDRESS.'
                 <br>
-                Tel: '.TEL.' | Email: '.EMAIL.'
-                <br>
                 '.FRONT_SITE_PATH.'
             </td>
             <td align="right">                    
@@ -128,10 +126,9 @@ $mpdf=new \Mpdf\Mpdf([
 $mpdf->SetTitle('Notice Barisal Engineering College');
 $mpdf->SetFooter('Developed By Dhrubo Raj Roy');
 $mpdf->WriteHTML($html);
-// if($row['link']==""){
+if($row['link']==""){
     $mpdf->output("../notice_files/".$file,'F');
-    $mpdf->output("../notice_files/".$file,'I');
     $sql="UPDATE `notice` SET `link` = '$file' WHERE `notice`.`id` = '$notice_id'";
     mysqli_query($con,$sql);
-// }
-// redirect("../webadmin/notices");
+}
+redirect("../webadmin/notices");

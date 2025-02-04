@@ -42,11 +42,14 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
     <link href="../students/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="../students/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
-    
 
     <!-- Main CSS-->
     <link href="../students/css/theme.css" rel="stylesheet" media="all">
-
+    <style>
+        a, a:link, a:visited {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <!-- animsition -->
 <body class="">
@@ -56,7 +59,7 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="./">
+                        <a class="logo" href="/">
                             <img src="../images/logo.png" alt="logo" style="max-width: 50%;"/>
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
@@ -88,6 +91,10 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
                             <a href="profile">
                                 <i class="fas fa-user"></i>Profile</a>
                         </li>
+                        <li>
+                            <a href="edit_profile">
+                                <i class="fas fa-user"></i>Edit Profile</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -97,7 +104,7 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="./">
+                <a href="/">
                     <img src="../images/logo.png" alt="BEC Logo" style="max-width: 100% !important;"/>
                 </a>
             </div>
@@ -121,6 +128,10 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
                         <li>
                             <a href="profile">
                                 <i class="fas fa-user"></i>Profile</a>
+                        </li>
+                        <li>
+                            <a href="edit_profile">
+                                <i class="fas fa-user"></i>Edit Profile</a>
                         </li>
                     </ul>
                 </nav>

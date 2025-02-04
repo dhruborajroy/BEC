@@ -5,8 +5,6 @@ if(isset($_GET['type'])){
   $type=get_safe_value($_GET['type']);
 }
 ?>
-
-
     <!--=================================
     inner-header -->
     <section class="inner-banner bg-overlay-black-70 bg-holder" style="background-image: url('../images/bg/02.jpg');">
@@ -35,7 +33,7 @@ if(isset($_GET['type'])){
             if($type!=""){
               $additional_sql="and type='$type'";
             }
-            $sql="select * from people  where  dept='$dept_id'  $additional_sql";
+            $sql="SELECT * FROM people WHERE dept = '$dept_id' $additional_sql ORDER BY CASE WHEN designation = 'Professor' THEN 1 WHEN designation = 'Associate Professor' THEN 2 WHEN designation = 'Assistant Professor' THEN 3 WHEN designation = 'Lecturer' THEN 4 ELSE 5 END";
             $res=mysqli_query($con,$sql); 
             if(mysqli_num_rows($res)>0){
               $i=1;        

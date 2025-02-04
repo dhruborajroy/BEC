@@ -1,8 +1,7 @@
 <?php
 include_once('Mysqldump/Mysqldump.php');
 include('smtp/PHPMailerAutoload.php');
-$dump = new Ifsnop\Mysqldump\Mysqldump('mysql:host=localhost;dbname=school', 'root', '');
-$f=date('d-m-Y');
+$dump = new Ifsnop\Mysqldump\Mysqldump('mysql:host=localhost;dbname='.$database_name, $database_username, $database_password);
 $dump->start("backup/$f.sql");
 // die;
 // $mail=new PHPMailer(true);

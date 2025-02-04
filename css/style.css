@@ -1,13 +1,4 @@
-/*
 
-Template: Academic - Education, University and College Template
-Version: 1.0.0
-Author: potenzaglobalsolutions
-Design and Developed by: potenzaglobalsolutions.com
-
-NOTE: This is main stylesheet of template, This file contains the styling for the actual Template.
-
-*/
 /*================================================
 [  Table of contents  ]
 ================================================
@@ -55,13 +46,28 @@ NOTE: This is main stylesheet of template, This file contains the styling for th
   Typography
 *****************************/
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "SolaimanLipi","Poppins", "sans-serif";
   font-weight: 400;
   font-style: normal;
   font-size: 14px;
   line-height: 1.5;
   color: #666666;
-  overflow-x: hidden; }
+  overflow-x: hidden; 
+    
+}
+
+
+@font-face {
+  font-family: 'SolaimanLipi';
+  src: url('../fonts/SolaimanLipi.eot');
+  src: url('../fonts/SolaimanLipi.woff') format('woff'),
+       url('../fonts/SolaimanLipi.ttf') format('truetype'),
+       url('../fonts/SolaimanLipi.svg#SolaimanLipiNormal') format('svg'),
+       url('../fonts/SolaimanLipi.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 a {
   outline: medium none !important;

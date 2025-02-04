@@ -25,33 +25,16 @@ include("header.php");
     <!--=================================contact -->
     <section class="space-ptb">
       <div class="container">
-        <div class="row">
-          <!-- <div class="col-lg-7 mb-4 mb-lg-0">
-            <h4 class="mb-4">Need Assistance? Please Complete The Contact Form</h4>
-            <form>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control bg-white border" id="Website" placeholder="Website URL">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control bg-white border" id="name" placeholder="Your Name">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="email" class="form-control bg-white border" id="inputEmail4" placeholder="Email Address">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control bg-white border" id="number" placeholder="Phone Number">
-                </div>
-                <div class="form-group col-md-12">
-                  <textarea class="form-control bg-white border" rows="4" placeholder="Message"></textarea>
-                </div>
-                <div class="col-md-12">
-                  <a class="btn btn-primary" href="#">Send Message</a>
-                </div>
-              </div>
-            </form>
-          </div> -->
-          <div class="col-lg-12">
+      <div class="row col-lg-12">
+          <div class="col-lg-12 mb-4 mb-lg-0 contect-center">
+            <h3 align="center">
+              বরিশাল ইঞ্জিনিয়ারিং কলেজ <br>
+              উত্তর দূর্গাপুর, বরিশাল সদর, বরিশাল <br>
+              ফোন:  <br>
+              ইমেইল: becbarishal@gmail.com  
+            </h3 >
+          </div>
+          <div class="col-lg-6 mt-5">
             <div class="row">
               <!--=================================Map -->
               <section class="map">

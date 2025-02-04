@@ -39,7 +39,9 @@ include("header.php");
             <!-- team-01 START -->
             <div class="team">
               <div class="team-img">
+              <a href="faculty-details?id=<?php echo md5($row['id'])?>" class="team-name">
                 <img class="img-fluid" src="images/teachers/<?php echo $row['image']?>" alt="">
+              </a>
               </div>
               <div class="team-info">
                 <a href="faculty-details?id=<?php echo md5($row['id'])?>" class="team-name"><?php echo $row['name']?></a>

@@ -165,7 +165,7 @@ if(isset($_POST['submit'])){
                                                         echo 'src="'.SLIDER_IMAGE.$image.'"';}
                                                         ?> >
                                         </div>
-                                        <label for="file_ip_1">Upload Image</label>
+                                        <label for="file_ip_1">Upload Image(Max Size 1Mb & Prefered Size 1300x300 px)</label>
                                         <input type="file" name="image" id="file_ip_1" accept="image/*"
                                         onchange="showPreview(event);" <?php echo $required?>
                                         value="<?php echo $image?>">

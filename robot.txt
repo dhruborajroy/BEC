@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /webadmin/       # Blocks admin panel (if applicable)
+Disallow: /images/     # Blocks private files (if applicable)
+Disallow: /tmp/         # Blocks temporary files
+Disallow: /cgi-bin/     # Blocks CGI scripts (if applicable)
+
+# Allow Googlebot to index everything else
+User-agent: Googlebot
+Allow: /
+
+# Sitemap
+Sitemap: https://bec.edu.bd/sitemap.xml
