@@ -45,15 +45,14 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                         <div class="item-title">
                             <h3>All References</h3>
                         </div>
-                    </div>
-                    <form class="mg-b-20">
-                        <div class="row gutters-8">
-                            <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                                <input type="text" placeholder="Search by ID/ Name/ Number ..." class="form-control"
-                                    id="myInput">
+                        <div class="dropdown show">
+                            <div class="col-12 form-group mg-t-8">
+                                <a href="manage_referances.php"> <button type="submit"
+                                        class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add New Reference</button>
+                                </a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                     <div class="table-responsive">
                         <table class="table display data-table text-nowrap">
                             <thead>

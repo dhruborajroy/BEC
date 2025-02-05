@@ -61,7 +61,7 @@
         "preventDuplicates": true, // Prevent duplicates
         "positionClass": "toast-top-right", // Position of the toastr
         "closeButton": true, // Show close button
-        "timeOut": 1000, // Duration for which the toastr is displayed
+        "timeOut": 3000, // Duration for which the toastr is displayed
         "extendedTimeOut": 1000 // Duration for which the toastr is displayed when hovering over it
    }
 </script>
@@ -74,3 +74,20 @@
 
 </html>
 <!-- end document-->
+
+<?php
+if (isset($_SESSION['TOASTR_MSG'])) {
+    $type = $_SESSION['TOASTR_MSG']['type']; // success, error, info, warning
+    $body = $_SESSION['TOASTR_MSG']['body'];
+    $title = $_SESSION['TOASTR_MSG']['title'];
+
+    echo "<script>
+        $(document).ready(function() {
+            toastr.$type('$body', '$title');
+        });
+    </script>";
+
+    // Clear Toastr message after displaying
+    unset($_SESSION['TOASTR_MSG']);
+}
+?>

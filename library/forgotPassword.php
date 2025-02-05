@@ -19,7 +19,7 @@
             $row=mysqli_fetch_assoc($res);
             $otp=rand(1111,9999);
             $html=send_email_using_tamplate($row['name'],$otp);
-            send_email($row['email'],$html,"OTP $otp");
+            send_email($row['email'],$html,"OTP $otp"); 
             $email=$row['email'];
         }else{
             $msg="You are not registered.";

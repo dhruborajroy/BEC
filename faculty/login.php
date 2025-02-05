@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
     $password = trim($_POST['password']);
     $ip_address = $_SERVER['REMOTE_ADDR'];
     $time = time();
-    $limit = 3; 
+    $limit = 5; 
     $lockout_time = 900; 
 
     $sql_attempts = "SELECT attempts, last_attempt FROM login_attempts WHERE ip_address='$ip_address'";
@@ -112,13 +112,13 @@ if(isset($_POST['submit'])){
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+    <meta name="keywords" content="BEC, Barishal Engineering College" />
+    <meta name="description" content="Barishal Engineering College (BEC) is an esteemed engineering institution affiliated with the University of Dhaka. Explore our programs, faculty, and admission details. বরিশাল ইঞ্জিনিয়ারিং কলেজটি ৮ একর জায়গার উপর বরিশাল বিভাগীয় শহর থেকে প্রায় ১৩ কিঃমিঃ পূর্বে বন্দর থানাধীন উত্তর দূর্গাপুরে বরিশাল-ভোলা মহাসড়কের পাশে অবস্থিত। অত্র কলেজটি ১৬ নভেম্বর ২০১৭ খ্রিঃ হতে ঢাকা বিশ্ববিদ্যালয়ের অধিভূক্ত হয়ে চলতি (২০১৭-১৮) সেশনে ছাত্র/ছাত্রী ভর্তির অনুমোদন প্রাপ্ত হয়েছে। দেশে প্রকৌশল শিক্ষা বিস্তারের লক্ষ্যে শিক্ষা মন্ত্রণালয়, কারিগরি ও মাদ্রাসা শিক্ষা বিভাগের নিয়ন্ত্রনাধীন কারিগরি শিক্ষা অধিদপ্তরের বাস্তবায়নাধীন  জুন ২০১৮ পর্যন্ত প্রকল্প মেয়াদে এর নির্মাণ ও পূর্ত কাজ সম্পন্ন হবে। উক্ত প্রতিষ্ঠানটির একাডেমিক কার্যক্রম  ঢাকা বিশ্ববিদ্যালয়ের ইঞ্জিনিয়ারিং এন্ড টেকনোলজি অনুষদের অধীনে পরিচালিত হবে । কলেজটিতে বর্তমানে দুইটি বিভাগে ছাত্র-ছাত্রী ভর্তি করা হবেঃ (১) ইলেকট্রিক্যাল এন্ড ইলেকট্রনিক্স ইঞ্জিনিয়ারিং (ইইই) বিভাগ (২) সিভিল ইঞ্জিনিয়ারিং (সিই)বিভাগ। প্রতি একাডেমিক সেশনে প্রতি বিভাগে ৬০ জন করে মোট ১২০ জন ছাত্র-ছাত্রী ভর্তি করা হবে। কলেজটিতে একটি প্রশাসনিক ভবন, চারটি একাডেমিক ভবন, একটি ৪০০ সিটের ছাত্রাবাস ও একটি ১০০ সিটের ছাত্রীনিবাস সহ শিক্ষক ও কর্মচারীদের জন্য আবাসিক ভবন রয়েছে। অত্র প্রতিষ্ঠানে সুবিশাল খেলার মাঠ, বিষয় ভিত্তিক বই সম্বলিত লাইব্রেরি, দ্রুত গতির ইন্টারনেট সুবিধা সহ আধুনিক কম্পিউটার ল্যাব এবং অত্যাধুনিক ল্যাব/ওয়ার্কশপসহ শিক্ষার আধুনিক সুযোগ সুবিধা রয়েছে। ভর্তিকৃত ছাত্র-ছাত্রীদের মধ্যে ৫০% ছাত্র/ছাত্রীকে সরকার নির্ধারিত হারে সেমিস্টার ভিত্তিক মেধা বৃত্তি প্রদান করা হয়">
+    <meta name="title" content="Barishal Engineering College - An affiliated Engineering Collge of University of Dhaka">
+    <meta name="author" content="Dhrubo Raj Roy - Civil 04">
 
     <!-- Title Page-->
-    <title>Login</title>
-
+    <title>Faculty Login</title>
     <!-- Fontfaces CSS-->
     <link href="../students/css/font-face.css" rel="stylesheet" media="all">
     <link href="../students/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -134,8 +134,9 @@ if(isset($_POST['submit'])){
     <link href="../students/vendor/wow/animate.css" rel="stylesheet" media="all">
     <link href="../students/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="../students/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="../students/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <!-- <link href="../students/vendor/select2/select2.min.css" rel="stylesheet" media="all"> -->
     <link href="../students/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
 
     <!-- Main CSS-->
     <link href="../students/css/theme.css" rel="stylesheet" media="all">
@@ -149,8 +150,8 @@ if(isset($_POST['submit'])){
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
-                                <img src="../images/logo.png" alt="CoolAdmin">
+                            <a href="/">
+                                <img src="../images/bec-bg-white.jpg" alt="bec-logo">
                             </a>
                         </div>
                         <div class="login-form">
@@ -171,7 +172,7 @@ if(isset($_POST['submit'])){
                                         <input type="checkbox" name="remember">Remember Me
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a href="forgot_password">Forgotten Password?</a>
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" name="submit" type="submit" onclick="submit()">sign in</button>
@@ -217,19 +218,10 @@ if(isset($_POST['submit'])){
 </body>
 
 </html>
-<!-- end document-->
- <script>
-    
-    function submit(){
-        jQuery('#error').html("");
-        var email=jQuery('#email').val();
-        var password=jQuery('#password').val();
-        if(email==""){
-            jQuery('#error').html("Please Enter Email");
-        }elesif(password==""){
-            jQuery('#error').html("Please Enter password");
-        }else{
-            jQuery('.au-btn').html("please wait...");
-        }
-    }
- </script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+
+<!-- Include jQuery (required for Toastr) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Include Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!-- Your custom script calling Toastr -->

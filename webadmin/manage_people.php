@@ -269,7 +269,7 @@ define('SECURE_ACCESS', true);
                      <?php
                      $res=mysqli_query($con,"SELECT * FROM `depts_lab_list` where status='1'");
                      while($row=mysqli_fetch_assoc($res)){
-                        if($row['short_form']==$dept_id){
+                        if($row['short_form']==$dept){
                            echo "<option selected='selected' value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
                         }else{
                            echo "<option value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";

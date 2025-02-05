@@ -33,22 +33,22 @@
          </div>
          <?php 
             } } else { ?>
-         <!-- Swiper Slider 1-->
-         <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/sliders/1.png  ); background-size: cover; background-position: center center;">
-            <div class="swipeinner container">
-               <div class="row justify-content-center text-center">
-                  <div class="col-lg-10 col-md-12">
-                     <div class="slider-1">
-                        <div class="animated" data-swiper-animation="fadeInUp" data-duration="1s" data-delay="0.25s">
-                           <h1 class="animated text-white mb-4" data-swiper-animation="fadeInUp" data-duration="1.5s" data-delay="0.25s">Default Slider</h1>
-                           <div class="animated text-white px-lg-5" data-swiper-animation="fadeInUp" data-duration="2.5s" data-delay="0.25s">
+               <!-- Swiper Slider 1-->
+               <div class="swiper-slide align-items-center d-flex bg-overlay-black-40" style="background-image: url(images/sliders/1.png); background-size: cover; background-position: center center;">
+                  <div class="swipeinner container">
+                     <div class="row justify-content-center text-center">
+                        <div class="col-lg-10 col-md-12">
+                           <div class="slider-1">
+                              <div class="animated" data-swiper-animation="fadeInUp" data-duration="1s" data-delay="0.25s">
+                                 <h1 class="animated text-white mb-4" data-swiper-animation="fadeInUp" data-duration="1.5s" data-delay="0.25s">Default Slider</h1>
+                                 <div class="animated text-white px-lg-5" data-swiper-animation="fadeInUp" data-duration="2.5s" data-delay="0.25s">
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
          <?php } ?>
       </div>
    </div>
@@ -67,14 +67,15 @@
                <div class="flex-grow-1 marquee-spotlight p-1">
                   <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="10">
                      <?php
-                        $notice_res=mysqli_query($con,"select * from notice where status=1 and  dept='$dept_id'  order by added_on desc");
+                        $swl= "select * from notice where status=1 and dept='$dept_id'  order by added_on desc";
+                        $notice_res=mysqli_query($con,$swl);
                         if(mysqli_num_rows($notice_res)>0){
                         while($notice_res_row=mysqli_fetch_assoc($notice_res)){
                         ?>
-                     <a href="../pdfreports/notice.php?notice_id=<?php echo $notice_res_row['id']?>" target="_blank"  style="padding-left:100px">
-                     <span class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
-                     <span class="spotlight-notice"> <?php echo $notice_res_row['title']?> </span>
-                     </a>
+                        <a  style="color:white;text-decoration:none" href="../notice_files/<?php echo $notice_res_row['link']?>" target="_blank"  style="padding-left:100px">
+                           <span  style="color:white" class="spotlight-date" style="color:red;"><i class="far fa-calendar-check mr-1"></i> <?php echo date("d-M-Y",$notice_res_row['added_on'])?></span>
+                           <span class="spotlight-notice" style="color:white"> <?php echo $notice_res_row['title']?> </span>
+                        </a>
                      <?php } }?>
                   </marquee>
                </div>
@@ -124,7 +125,6 @@
                               <p class="text-dark mb-lg-0">
                                  <?php 
                                     $maxLength = 600;
-                                    
                                     if (strlen($news_res_row['details']) > $maxLength) {
                                         $truncatedString = substr_replace($news_res_row['details'], '...', $maxLength);
                                     } else {
@@ -162,7 +162,7 @@
       </div>
       <div class="row">
          <?php
-            $faculty_sql="select * from people where  dept='$dept_id' and type='faculty'";
+            $faculty_sql="select * from people where dept='$dept_id' and type='faculty'";
             $faculty_res=mysqli_query($con,$faculty_sql); 
             if(mysqli_num_rows($faculty_res)>0){
               $i=1;        
@@ -179,10 +179,8 @@
                     <p class="team-designation text-white"><?php echo $faculty_row['designation']?></p>
                     <div class="team-social">
                       <ul>
-                          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                          <li><a href="<?php echo $faculty_row['facebook']?>"><i class="fab fa-facebook-f"></i></a></li>
+                          <li><a href="<?php echo $faculty_row['linked_in']?>"><i class="fab fa-linkedin-in"></i></a></li>
                       </ul>
                     </div>
                 </div>

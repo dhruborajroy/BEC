@@ -61,7 +61,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                     </thead>
                     <tbody id="myTable">
                         <?php 
-                        $sql="select lab_list.name,lab_list.name_bn,depts_lab_list.name as dept_name from lab_list,depts_lab_list where lab_list.dept_id=depts_lab_list.id";
+                        $sql="select lab_list.id,lab_list.name,lab_list.status,lab_list.name_bn,depts_lab_list.name as dept_name from lab_list,depts_lab_list where lab_list.dept_id=depts_lab_list.id";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;

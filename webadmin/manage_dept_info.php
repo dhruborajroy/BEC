@@ -28,7 +28,7 @@ if(isset($_GET['dept_id']) && $_GET['dept_id']!==""){
            'body'=>'You don\'t have the permission to access the location!',    
            'title'=>'Error',
         );
-        // redirect("index.php");
+        redirect("index.php");
     }
 }
 if(isset($_POST['submit'])){
@@ -54,8 +54,8 @@ if(isset($_POST['submit'])){
             'body'=>'Data Updated',
             'title'=>'Success',
         );
-        echo $sql;  
-        // redirect('./about_us_contents');
+        // echo $sql;  
+        redirect('./about_us_contents');
     }else{
         echo $sql;
     }

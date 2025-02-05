@@ -137,6 +137,7 @@ window.location.href = './login.php';
 
 function isFaculty(){
 	if(!isset($_SESSION['FACULTY_LOGIN'])){
+		return 0;
 	?>
 <script>
 window.location.href = './login.php';

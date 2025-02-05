@@ -122,7 +122,7 @@ if(mysqli_num_rows($res)>0){
                                                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-experience" role="tab" aria-controls="nav-contact" aria-selected="false">Experience</a>
                                                     <a class="nav-item nav-link" id="nav-publications-tab" data-toggle="tab" href="#nav-publications" role="tab" aria-controls="nav-contact" aria-selected="false">Publications</a>
                                                     <a class="nav-item nav-link" id="nav-scholarship_award-tab" data-toggle="tab" href="#nav-scholarship_award" role="tab" aria-controls="nav-contact" aria-selected="false">Scholarships & Awards</a>
-                                                    <a class="nav-item nav-link" id="nav-research-tab" data-toggle="tab" href="#nav-research" role="tab" aria-controls="nav-contact" aria-selected="false">Research</a>
+                                                    <a class="nav-item nav-link" id="nav-research-tab" data-toggle="tab" href="#nav-research" role="tab" aria-controls="nav-contact" aria-selected="false">Professional Training</a>
                                                     <a class="nav-item nav-link" id="nav-teaching_supervision-tab" data-toggle="tab" href="#nav-teaching_supervision" role="tab" aria-controls="nav-contact" aria-selected="false">Teaching & Supervision</a>
                                                 </div>
                                             </nav>

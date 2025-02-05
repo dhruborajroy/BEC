@@ -5,9 +5,12 @@ if (!defined('SECURE_ACCESS')) {
 }
 require('../inc/constant.inc.php');
 require('../inc/connection.inc.php');
-require_once("../inc/smtp/class.phpmailer.php");
 require('../inc/function.inc.php');
-isFaculty();
+
+if(!isset($_SESSION['FACULTY_LOGIN'])){
+    redirect("login");
+    die;
+}
 $faculty_id=$_SESSION[ 'FACULTY_ID'];
 ?>
 <!DOCTYPE html>
@@ -178,10 +181,10 @@ $faculty_id=$_SESSION[ 'FACULTY_ID'];
                                                     <a href="profile">
                                                         <i class="zmdi zmdi-account"></i>Profile</a>
                                                 </div>
-                                                <!-- <div class="account-dropdown__item">
+                                                <div class="account-dropdown__item">
                                                     <a href="change_password">
                                                         <i class="zmdi zmdi-settings"></i>Change Password</a>
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <div class="account-dropdown__footer">
                                                 <a href="logout">

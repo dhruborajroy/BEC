@@ -54,14 +54,11 @@ $dept_id="ce";
                     <li>
                       <a href="http://bec.ac.bd" target="_blank" rel="noopener noreferrer">Old Website</a>
                     </li>
-                    <li>
-                      <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
-                    </li>
                     <li>                      
-                      <a href="http://library.bec.edu.bd" target="_blank" rel="noopener noreferrer">Libray</a>
+                      <a href="http://bec.edu.bd/students/" target="_blank" rel="noopener noreferrer">Student Login</a>
                     </li>
                     <li>
-                      <a href="http://gmail.com" target="_blank" rel="noopener noreferrer">Webmail</a>
+                      <a href="https://mail.google.com/a/bec.edu.bd" target="_blank" rel="noopener noreferrer">Webmail</a>
                     </li>
               </ul>
             </div>

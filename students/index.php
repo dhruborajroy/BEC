@@ -20,7 +20,7 @@ include("header.php");
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart1"></canvas>
+                                            <!-- <canvas id="widgetChart1"></canvas> -->
                                         </div>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@ include("header.php");
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart2"></canvas>
+                                            <!-- <canvas id="widgetChart2"></canvas> -->
                                         </div>
                                     </div>
                                 </div>
@@ -51,18 +51,18 @@ include("header.php");
                                                 <i class="zmdi zmdi-calendar-note"></i>
                                             </div>
                                             <div class="text">
-                                                <h2><?php echo calculateCGPA($user_id)?></h2>
-                                                <span>Current CGPA</span>
+                                                <h2><?php echo gettotalstudent()?></h2>
+                                                <span>Total Students</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
+                                            <!-- <canvas id="widgetChart3"></canvas> -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="au-card m-b-30">
                                     <div class="au-card-inner"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
@@ -123,7 +123,7 @@ include("header.php");
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div class="row">
                             <div class="col-lg-12">
                                 <div class="au-card m-b-30">

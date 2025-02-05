@@ -20,6 +20,10 @@ $email='';
 $batch='';
 $reg_no='';
 $deptId="";
+$semester="";
+$class_roll="";
+$class_roll="";
+$dept_id="";
 if(isset($_GET['id']) && $_GET['id']!=""){
 	$id=get_safe_value($_GET['id']);
     $res=mysqli_query($con,"select * from students where md5(id)='$id'");

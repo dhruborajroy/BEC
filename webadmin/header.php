@@ -200,12 +200,12 @@ isAdmin();
                      <span>Sliders</span>
                   </a>
                </li>
-               <li class="nav-item">
+               <!-- <li class="nav-item">
                   <a href="about_us" class="nav-link">
                      <i class="flaticon-maths-class-materials-cross-of-a-pencil-and-a-ruler"></i>
                      <span>About Us</span>
                   </a>
-               </li>
+               </li> -->
                <li class="nav-item">
                   <a href="course_teachers" class="nav-link ">
                      <i class="flaticon-couple"></i>
@@ -294,17 +294,23 @@ isAdmin();
                         </li>
                      </ul>
                </li>
-               <li class="nav-item sidebar-nav-item">
+               <li class="nav-item">
+                  <a href="bec_general_infos" class="nav-link">
+                     <i class="flaticon-maths-class-materials-cross-of-a-pencil-and-a-ruler"></i>
+                     <span> BEC General Infos</span>
+                  </a>
+               </li>
+               <!-- <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-settings"></i><span>General Info</span></a>
                   <ul class="nav sub-group-menu ">
                   <li class="nav-item">
                         <a href="bec_general_infos"
                            class="nav-link "><i
                            class="fas fa-angle-right"></i>All
-                           BEC Gneral Infos</a>
+                           BEC General Infos</a>
                      </li>
                   </ul>
-               </li>
+               </li> -->
                <li class="nav-item sidebar-nav-item">
                   <a href="#" class="nav-link"><i class="flaticon-user"></i><span>Faculty & Staffs</span></a>
                   <ul class="nav sub-group-menu ">

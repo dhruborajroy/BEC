@@ -1,6 +1,7 @@
 <?php 
 define('SECURE_ACCESS', true);
 include("header.php");
+$type="";
 if(isset($_GET['type'])){
   $type=get_safe_value($_GET['type']);
 }

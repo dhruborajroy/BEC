@@ -104,7 +104,7 @@
                        'body'=>'Data updated',
                        'title'=>'Success',
                    );
-                //    redirect('./people');
+                   redirect('profile');
                }else{
                    echo $sql;
                }
@@ -229,15 +229,7 @@
                             <label for="textarea-input" class=" form-control-label">Education</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea name="education" id="textarea-input" rows="9" placeholder="Ph. D.
-McGill University, Montreal,Canada (2013)
-
-M.Sc. Engg.
-University of Tokyo, Tokyo,Japan (2003)
-
-B.Sc. Engineering (Civil)
-Bangladesh (1999)
-                            " class="form-control textarea-input"><?php echo htmlspecialchars($education); ?></textarea>
+                            <textarea name="education" id="textarea-input" rows="9" class="form-control textarea-input"><?php echo htmlspecialchars($education); ?></textarea>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -253,15 +245,7 @@ Bangladesh (1999)
                             <label for="textarea-input" class=" form-control-label">Experience</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <textarea name="experience" id="textarea-input" rows="9" placeholder="Service Records
-Professor
-Department/Section: Department of Civil Engineering
-Barishal Engineering College 02-Feb-2025 to 02-Feb-2025
-
-Professional Body Membership
-Institution of Engineers, Bangladesh (IEB)
-Member Type: Fellow
-Member ID: F-xxxxx" class="form-control textarea-input"><?php echo htmlspecialchars($experience); ?></textarea>
+                            <textarea name="experience" id="textarea-input" rows="9" class="form-control textarea-input"><?php echo htmlspecialchars($experience); ?></textarea>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -287,6 +271,34 @@ Member ID: F-xxxxx" class="form-control textarea-input"><?php echo htmlspecialch
                         <div class="col-12 col-md-9">
                             <textarea name="teaching_supervision" id="textarea-input" rows="9" placeholder="" class="form-control textarea-input"><?php echo htmlspecialchars($teaching_supervision); ?></textarea>
                         </div>
+                    </div>
+                    
+                    <div class="row col-lg-12 col-12">
+                            <div class="col-sm-12 img-body">
+                                <div class="center">
+                                    <div class="form-input">
+                                        <div class="preview">
+                                        <img style="height:150px;width:150px;" id="file_ip_1-preview" <?php if($image!=''){
+                                            echo 'src="../images/teachers/'.$image.'"';}
+                                            ?> >
+                                        </div>
+                                        <label for="file_ip_1">Upload Image</label>
+                                        <input type="file" name="image" id="file_ip_1" accept="image/*"
+                                        onchange="showPreview(event);" <?php echo $required?>
+                                        value="<?php echo $image?>">
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    function showPreview(event) {
+                                        if (event.target.files.length > 0) {
+                                            var src = URL.createObjectURL(event.target.files[0]);
+                                            var preview = document.getElementById("file_ip_1-preview");
+                                            preview.src = src;
+                                            preview.style.display = "block";
+                                        }
+                                    }
+                                </script>
+                            </div>
                     </div>
                 
             </div>

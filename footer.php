@@ -7,8 +7,8 @@ if (!defined('SECURE_ACCESS')) {
       <div class="container pt-5">
         <div class="row pb-5 pb-lg-6 mb-lg-3">
           <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0 pr-lg-5">
-            <a href="index-2.html"><img class="img-fluid mb-3 footer-logo" src="images/logo-light.svg" alt=""></a>
-            <p class="text-white">The best way is to develop and follow a plan. Start with your goals in mind and then work backward to develop the plan.</p>
+            <a href="index-2.html"><img class="img-fluid mb-3 footer-logo" src="images/logo.png" alt=""></a>
+            <p class="text-white"></p>
             <h5 class="text-white mb-2 mb-sm-4">Follow Us</h5>
             <div class="social-icon social-icon-style-02">
               <ul>

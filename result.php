@@ -2,24 +2,46 @@
 define('SECURE_ACCESS', true);
 include("header.php");
 ?>
-<style>.container1 {
+<style>
+.container1 {
   position: relative;
-  overflow: hidden;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  max-width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Then style the iframe to fit in the container div with full height and width */
+/* Responsive iframe */
 .responsive-iframe {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 100%;
-}</style>
+  border: none;
+}
+
+/* Tablet Optimization */
+@media (max-width: 768px) {
+  .container1 {
+    padding-top: 85%; /* Increased height for better readability */
+  }
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  .container1 {
+    padding-top: 120%; /* Further increased height for small screens */
+  }
+}
+</style>
+
 <div class="container1">
   <iframe class="responsive-iframe" src="https://www.cmc.du.ac.bd/result.php"></iframe>
 </div>
-<?php include("footer.php")?>
+
+<?php include("footer.php"); ?>
