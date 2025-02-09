@@ -51,9 +51,8 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                        <?php 
-                        
-                        $sql="select services_request.reason,services_request.type,services_request.id,services_request.status as status,students.name,services.name as service_name from services_request, students,services where services_request.student_id=students.id and services.id=services_request.type";
+                        <?php
+                        $sql="select services_request.reason,services_request.type,services_request.id,services_request.status as status,students.name,services.name as service_name from services_request, students,services,depts_lab_list where services_request.student_id=students.id and services.id=services_request.type and  depts_lab_list.short_form='$dept_id'  and depts_lab_list.id=students.dept_id";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;

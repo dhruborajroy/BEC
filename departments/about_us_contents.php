@@ -15,7 +15,7 @@ include("header.php");
     </div>
     <!-- Breadcubs Area End Here -->
 <?php 
-$sql="select * from dept_general_info";
+$sql="select * from dept_general_info where dept_id='$dept_id'";
 $res=mysqli_query($con,$sql);
 if(mysqli_num_rows($res)>0){
 $i=1;

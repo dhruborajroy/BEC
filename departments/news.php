@@ -5,20 +5,16 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
-		mysqli_query($con,"delete from sliders where id='$id'");
-		redirect('sliders');
-	}
-    if($type=='dept_delete'){
-		mysqli_query($con,"delete from dept_sliders where id='$id'");
-		redirect('sliders');
+		mysqli_query($con,"delete from news where id='$id'");
+		redirect('news');
 	}
 	if($type=='active' || $type=='deactive'){
 		$status=1;
 		if($type=='deactive'){
 			$status=0;
 		}
-		mysqli_query($con,"update sliders set status='$status' where id='$id'");
-        redirect('./sliders');
+		mysqli_query($con,"update news set status='$status' where id='$id'");
+        redirect('news');
 	}
 
 }
@@ -63,7 +59,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                     </thead>
                     <tbody id="myTable">
                         <?php 
-                        $sql="select * from news";
+                        $sql="select * from news where dept='$dept_id' ";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;

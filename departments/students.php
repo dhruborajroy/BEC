@@ -5,10 +5,10 @@ include('header.php');
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
-	if($type=='delete'){
-		mysqli_query($con,"delete from students where id='$id'");
-		redirect('students');
-	}
+	// if($type=='delete'){
+	// 	mysqli_query($con,"delete from students where id='$id'");
+	// 	redirect('students');
+	// }
 	if($type=='active' || $type=='deactive'){
 		$status=1;
 		if($type=='deactive'){
@@ -40,13 +40,13 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                 <div class="item-title">
                     <h3>All Students' Data</h3>
                 </div>
-                <div class="dropdown show">
+                <!-- <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
                         <a href="manage_students"> <button type="submit"
                                 class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add new student</button>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="table-responsive">
                 <table class="table display data-table text-nowrap">
@@ -62,8 +62,10 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                     </thead>
                     <tbody id="myTable">
                         <?php 
-                        $sql="select students.*, batch.name as batch_name from students,batch where students.batch=batch.id";
-                        $res=mysqli_query($con,$sql);
+                        $st_sql="SELECT students.id,students.name,students.image,students.status,students.fName,students.reg_no, batch.name as batch_name,depts_lab_list.id as dept_id FROM `students`,batch,depts_lab_list where depts_lab_list.short_form='$dept_id'  and depts_lab_list.id=students.dept_id and students.batch=batch.id ";
+
+                        // $sql="select students.*, batch.name as batch_name from students,batch where students.batch=batch.id ";
+                        $res=mysqli_query($con,$st_sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;
                         while($row=mysqli_fetch_assoc($res)){
@@ -81,8 +83,8 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                                         <span class="flaticon-more-button-of-three-dots"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="manage_students.php?id=<?php echo md5($row['id'])?>"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                        <a class="dropdown-item" href="view_student.php?id=<?php echo md5($row['id'])?>"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>View Details</a>
                                                 <?php if($row['status']=='0'){?>
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Active</a>
@@ -90,8 +92,8 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Deactive</a>
                                                 <?php }?>
-                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=delete"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Delete</a>
+                                        <!-- <a class="dropdown-item" href="?id=<?php //echo $row['id']?>&type=delete"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>Delete</a> -->
                                     </div>
                                 </div>
                             </td>

@@ -9,27 +9,17 @@ $dept_about="";
 $dept_vision_mission="";
 $dept_head_msg="";
 $dept_booklet="";
-if(isset($_GET['dept_id']) && $_GET['dept_id']!==""){
-	$dept_id=get_safe_value($_GET['dept_id']);
-    $swl="select * from `dept_general_info` where md5(dept_id)='$dept_id'";
-    $res=mysqli_query($con,$swl);
-    if(mysqli_num_rows($res)>0){
-        $row=mysqli_fetch_assoc($res);
-        $dept_publication=$row['dept_publication'];
-        $dept_research=$row['dept_research'];
-        $dept_scholarships=$row['dept_scholarships'];
-        $dept_about=$row['dept_about'];
-        $dept_vision_mission=$row['dept_vision_mission'];
-        $dept_head_msg=$row['dept_head_msg'];
-        $dept_booklet=$row['dept_booklet'];
-    }else{
-        $_SESSION['TOASTR_MSG']=array(
-           'type'=>'error',
-           'body'=>'You don\'t have the permission to access the location!',    
-           'title'=>'Error',
-        );
-        redirect("index.php");
-    }
+$swl="select * from `dept_general_info` where (dept_id)='$dept_id'";
+$res=mysqli_query($con,$swl);
+if(mysqli_num_rows($res)>0){
+    $row=mysqli_fetch_assoc($res);
+    $dept_publication=$row['dept_publication'];
+    $dept_research=$row['dept_research'];
+    $dept_scholarships=$row['dept_scholarships'];
+    $dept_about=$row['dept_about'];
+    $dept_vision_mission=$row['dept_vision_mission'];
+    $dept_head_msg=$row['dept_head_msg'];
+    $dept_booklet=$row['dept_booklet'];
 }
 if(isset($_POST['submit'])){
 	$dept_publication=get_safe_value($_POST['dept_publication']);
@@ -47,19 +37,18 @@ if(isset($_POST['submit'])){
         dept_vision_mission = '$dept_vision_mission', 
         dept_head_msg = '$dept_head_msg', 
         dept_booklet = '$dept_booklet'
-    WHERE md5(dept_id) = '$dept_id'";
+    WHERE (dept_id) = '$dept_id'";
     if(mysqli_query($con,$sql)){
         $_SESSION['TOASTR_MSG']=array(
             'type'=>'success',                
             'body'=>'Data Updated',
             'title'=>'Success',
         );
-        // echo $sql;  
         redirect('./about_us_contents');
+        die;
     }else{
         echo $sql;
     }
-    // echo $sql;
 }
 
 ?>

@@ -43,14 +43,14 @@
 <!-- Custom Js -->
 <script src="../webadmin/js/toastr.min.js"></script>
 <!-- sweet alert JS -->
-<script src="./../webadmin/js/sweetalert.min.js"></script>
-<script src="css/summernote/summernote.min.js"></script>
+<script src="../webadmin/js/sweetalert.min.js"></script>
+<script src="../webadmin/css/summernote/summernote.min.js"></script>
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 <!-- Custom Js -->
 <script src="../webadmin/js/main.js"></script>
 <script src="../webadmin/js/custom.php"></script>
 <!-- <script src="../webadmin/js/validation.php"></script> -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 
 <script>
       $('.full_input').summernote({

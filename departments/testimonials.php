@@ -31,12 +31,17 @@ include("header.php");
                                 <select class="form-control select2" name="student_id">
                                     <option>Select Student</option>
                                     <?php
-                                    $res=mysqli_query($con,"SELECT * FROM `students` ");
+                                    $st_sql="SELECT students.id,students.name,students.reg_no,depts_lab_list.id as dept_id FROM `students`,depts_lab_list where depts_lab_list.short_form='$dept_id'  and depts_lab_list.id=students.dept_id";
+                                    $res=mysqli_query($con,$st_sql);
                                     while($row=mysqli_fetch_assoc($res)){
                                         echo "<option value=".md5($row['id']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
                                     }
                                     ?>
                                 </select>
+                                
+                                <?php
+                                // echo $st_sql;                                    
+                                ?>
                             </div>
                             <div class="col-6 form-group mg-t-8">
                                 <label></label>
@@ -63,7 +68,8 @@ include("header.php");
                                 <select class="form-control select2" name="student_id">
                                     <option>Select Student</option>
                                     <?php
-                                    $res=mysqli_query($con,"SELECT * FROM `students` ");
+
+                                    $res=mysqli_query($con,$st_sql);
                                     while($row=mysqli_fetch_assoc($res)){
                                         echo "<option value=".md5($row['id']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
                                     }
@@ -95,7 +101,7 @@ include("header.php");
                                 <select class="form-control select2" name="student_id">
                                     <option>Select Student</option>
                                     <?php
-                                    $res=mysqli_query($con,"SELECT * FROM `students` ");
+                                    $res=mysqli_query($con,$st_sql);
                                     while($row=mysqli_fetch_assoc($res)){
                                         echo "<option value=".md5($row['id']).">".$row['name']."(".$row['reg_no'].")</option>";                                                        
                                     }

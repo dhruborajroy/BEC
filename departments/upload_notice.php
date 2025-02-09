@@ -21,26 +21,26 @@
        }
    }
    if(isset($_POST['submit'])){
-   	$title=get_safe_value($_POST['title']);
-    $date=time();
-    $user_id=$_SESSION['ADMIN_ID'];
-    if($id==''){
-        $id=uniqid();
-        $pdf=$id."_".time().'.pdf';
-        move_uploaded_file($_FILES['notice_pdf']['tmp_name'],UPLOAD_NOTICE_PDF.$pdf);
-        $sql="INSERT INTO `notice` (`id`, `title`, `link`, `added_on`,`upload_status`,`user_id`, `status`) VALUES 
-                                    ('$id', '$title',  '$pdf', '$date','1','$user_id', '1')";
-        if(mysqli_query($con,$sql)){
-            $_SESSION['TOASTR_MSG']=array(
-                'type'=>'success',
-                'body'=>'Data Inserted',
-                'title'=>'Success',
-            );
-        }else{
-            echo $sql;
-        }
-    }
-    redirect('./notices');
+      $title=get_safe_value($_POST['title']);
+      $date=time();
+      $user_id=$_SESSION['DEPT_ADMIN_ID'];
+      if($id==''){
+         $id=uniqid();
+         $pdf=$id."_".time().'.pdf';
+         move_uploaded_file($_FILES['notice_pdf']['tmp_name'],UPLOAD_NOTICE_PDF.$pdf);
+         $sql="INSERT INTO `notice` (`id`, `title`, `link`,`dept`, `added_on`,`upload_status`,`user_id`, `status`) VALUES 
+                                       ('$id', '$title',  '$pdf', '$dept_id','$date','1','$user_id', '1')";
+         if(mysqli_query($con,$sql)){
+               $_SESSION['TOASTR_MSG']=array(
+                  'type'=>'success',
+                  'body'=>'Data Inserted',
+                  'title'=>'Success',
+               );
+         }else{
+               echo $sql;
+         }
+      }
+      redirect('./notices');
 }
 ?>
 <div class="dashboard-content-one">

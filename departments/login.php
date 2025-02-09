@@ -9,8 +9,9 @@ require_once("../inc/smtp/class.phpmailer.php");
 
 $msg = "";
 
-if(isset($_SESSION['ADMIN_LOGIN'])){
+if(isset($_SESSION['DEPT_ADMIN_LOGIN'])){
     redirect('index.php');
+    die;
 }
 
 if(isset($_POST['submit'])){
@@ -38,7 +39,7 @@ if(isset($_POST['submit'])){
     }
 
     if(empty($msg)){ // Proceed if no brute force detected
-        $sql = "SELECT id, name, email, password, status FROM admin WHERE email='$email'";
+        $sql = "SELECT id, name, email, password, status FROM dept_admin WHERE email='$email'";
         $res = mysqli_query($con, $sql);
 
         if(mysqli_num_rows($res) > 0){
@@ -48,18 +49,15 @@ if(isset($_POST['submit'])){
                 $msg = "You haven't verified your email yet. Please verify your email.";
             } else {
                 if(password_verify($password, $row['password'])){
-                    $_SESSION['ADMIN_LOGIN'] = true;
-                    $_SESSION['ADMIN_ID'] = $row['id'];
-                    $_SESSION['ADMIN_NAME'] = $row['name'];
+                    $_SESSION['DEPT_ADMIN_LOGIN'] = true;
+                    $_SESSION['DEPT_ADMIN_ID'] = $row['id'];
+                    $_SESSION['DEPT_ADMIN_NAME'] = $row['name'];
 
                     // Log successful login
                     mysqli_query($con, "INSERT INTO login_logs (admin_id, email, ip_address, status, timestamp) 
                     VALUES ('{$row['id']}', '$email', '$ip_address', 'Success', NOW())");
                     // Reset failed login attempts
                     mysqli_query($con, "DELETE FROM login_attempts WHERE ip_address='$ip_address'");
-                    // Send login notification emails
-                    // sendLoginEmail($row['email']);
-                    // sendLoginEmail("dhruborajroy3@gmail.com");
                     // send_email("dhruborajroy3@gmail.com","d","Login Information ".date('F j, Y \at h:i:s A'));
                     redirect('./index.php');
                     die();
@@ -89,7 +87,7 @@ if(isset($_POST['submit'])){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Barishal Engineering College | Dashboard</title>
+    <title>Barishal Engineering College | Department Dashboard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -124,7 +122,8 @@ if(isset($_POST['submit'])){
                     <img src="../images/bec.png" alt="logo" style="width: 350px;">
                 </div>
                 <form class="login-form" method="POST" id="validate">
-                    <div class="form-group">
+                    <div class="form-group text-center">
+                        Department Dashboard
                         <?php echo $msg?>
                     </div>
                     <div class="form-group">

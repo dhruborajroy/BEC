@@ -28,7 +28,7 @@ include("header.php");
             <div class="col-6">
                <div class="item-content">
                   <div class="item-title">Students</div>
-                  <div class="item-number"><span class="counter" data-num="<?php echo $students=gettotalstudent()?>"><?php echo $students?></span></div>
+                  <div class="item-number"><span class="counter" data-num="<?php echo $students=getDeptWisetotalstudent($dept_id)?>"><?php echo $students?></span></div>
                </div>
             </div>
          </div>
@@ -46,7 +46,7 @@ include("header.php");
             <div class="col-6">
                <div class="item-content">
                   <div class="item-title">Faculty</div>
-                  <div class="item-number"><span class="counter" data-num="<?php echo $students=gettotalcount("Faculty")?>"><?php echo $students?></span></div>
+                  <div class="item-number"><span class="counter" data-num="<?php echo $students=gettotalcount("Faculty",$dept_id)?>"><?php echo $students?></span></div>
                </div>
             </div>
          </div>
@@ -64,7 +64,7 @@ include("header.php");
             <div class="col-6">
                <div class="item-content">
                   <div class="item-title">Officers</div>
-                  <div class="item-number"><span class="counter" data-num="<?php echo $students=gettotalcount("Officers")?>"><?php echo $students?></span></div>
+                  <div class="item-number"><span class="counter" data-num="<?php echo $students=gettotalcount("Officers",$dept_id)?>"><?php echo $students?></span></div>
                </div>
             </div>
          </div>
@@ -82,7 +82,7 @@ include("header.php");
             <div class="col-6">
                <div class="item-content">
                   <div class="item-title">Notice</div>
-                  <div class="item-number"><span class="counter" data-num="<?php echo $students=getTotalNotice()?>"><?php echo $students?></span></div>
+                  <div class="item-number"><span class="counter" data-num="<?php echo $students=getTotalNotice($dept_id)?>"><?php echo $students?></span></div>
                </div>
             </div>
          </div>
@@ -212,7 +212,7 @@ include("header.php");
             </div>
             <div class="notice-box-wrap">
                <?php 
-                  $sql="select * from notice where status='1' order by added_on desc";
+                  $sql="select * from notice where dept='$dept_id' order by added_on desc";
                   $res=mysqli_query($con,$sql);
                   if(mysqli_num_rows($res)>0){
                   $i=1;
@@ -229,7 +229,7 @@ include("header.php");
                      <a href="../notice_files/<?php echo $row['link']?>" style="color:white">Print Pdf</a>
                   </div>
                   <h6 class="notice-title"><a href="../notice_files/<?php echo $row['link']?>"><?php echo $row['title']?></a></h6>
-                  <div class="entry-meta"><?php echo $row['details']?></div>
+                  <!-- <div class="entry-meta"><?php //echo $row['details']?></div> -->
                </div>
                <?php 
                   $i++;

@@ -1,8 +1,9 @@
 <?php 
+define('SECURE_ACCESS', true);
 include("header.php");
 $msg="";
-$uid=$_SESSION['ADMIN_ID'];
-$sql="select * from `admin` where id='$uid'";
+$uid=$_SESSION['DEPT_ADMIN_ID'];
+$sql="select * from `dept_admin` where id='$uid'";
 $row=mysqli_fetch_assoc(mysqli_query($con,$sql));
 $email=$row['email'];
 if(isset($_POST['submit'])){

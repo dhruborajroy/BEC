@@ -29,13 +29,13 @@ if(isset($_POST['submit'])){
 	$title=get_safe_value($_POST['title']);
 	$reference=get_safe_value($_POST['reference']);
 	$details=$_POST['details'];
-    $user_id=$_SESSION['ADMIN_ID'];
+    $user_id=$_SESSION['DEPT_ADMIN_ID'];
     $added_on=time();
     $ref_id=uniqid();
-   if($id==''){
+    if($id==''){
         $id=uniqid();
-        $sql="INSERT INTO `notice` (`id`, `title`, `details`,`reference`, `added_on`,`upload_status`,`updated_on`, `user_id`, `status`) VALUES 
-                                    ('$id', '$title', '$details','$reference', '$added_on', '0','','$user_id', '1')";
+        $sql="INSERT INTO `notice` (`id`, `title`, `details`,`dept`,`reference`, `added_on`,`upload_status`,`updated_on`, `user_id`, `status`) VALUES 
+                                    ('$id', '$title', '$details','$dept_id','$reference', '$added_on', '0','','$user_id', '1')";
         if(mysqli_query($con,$sql)){
             if(isset($_POST['referance_ids'])){
                 for ($i = 0; $i <= count($_POST['referance_ids']) - 1; $i++) {

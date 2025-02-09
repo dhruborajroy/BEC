@@ -39,13 +39,13 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                 <div class="item-title">
                     <h3>All people' Data</h3>
                 </div>
-                <div class="dropdown show">
+                <!-- <div class="dropdown show">
                     <div class="col-12 form-group mg-t-8">
                         <a href="manage_people"> <button type="submit"
                                 class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add people</button>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="table-responsive">
                 <table class="table display data-table text-nowrap">
@@ -58,9 +58,8 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                         </tr>
                     </thead>
                     <tbody id="myTable">
-                        <?php 
-                        
-                        $sql="select * from people";
+                        <?php                        
+                        $sql="select * from people where dept='$dept_id'";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;
@@ -76,17 +75,16 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                                         <span class="flaticon-more-button-of-three-dots"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="manage_people.php?id=<?php echo $row['id']?>"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                                <?php if($row['status']=='0'){?>
+                                        <a class="dropdown-item" href="view_people.php?id=<?php echo md5($row['id'])?>"><i
+                                                class="fas fa-cogs text-dark-pastel-green"></i>View Details</a>
+                                                <!-- <?php if($row['status']=='0'){?>
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=active"><i
                                                 class="fas fa-cogs text-dark-pastel-green"></i>Active</a>
                                                 <?php }else{?>
                                         <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=deactive"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Deactive</a>
+                                                class="fas fa-cogs text-dark-pastel-green"></i>Deactive</a> -->
                                                 <?php }?>
-                                        <a class="dropdown-item" href="?id=<?php echo $row['id']?>&type=delete"><i
-                                                class="fas fa-cogs text-dark-pastel-green"></i>Delete</a>
+                                        
                                     </div>
                                 </div>
                             </td>

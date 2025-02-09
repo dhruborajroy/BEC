@@ -119,7 +119,7 @@
                               <a href="../news-details.php?news_id=<?php echo md5($news_res_row['id'])?>" class="text-dark h5"><?php echo $news_res_row['title']?></a>
                               <div class="events-meta my-2">
                                  <ul class="list-unstyled mb-0 d-flex">
-                                    <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i> <?php echo date("d M Y",strtotime($news_res_row['added_on']))?></li>
+                                    <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i><?php echo date("d M Y",($news_res_row['added_on']))?></li>
                                  </ul>
                               </div>
                               <p class="text-dark mb-lg-0">

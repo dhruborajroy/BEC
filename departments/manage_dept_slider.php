@@ -12,7 +12,6 @@ $button_text="";
 $image="";
 $msg="";
 $required='required';
-$dept_id="";
 if(isset($_GET['id']) && $_GET['id']!==""){
 	$id=get_safe_value($_GET['id']);
     $swl="select * from `dept_sliders` where md5(id)='$id'";
@@ -33,7 +32,7 @@ if(isset($_GET['id']) && $_GET['id']!==""){
            'body'=>'You don\'t have the permission to access the location!',    
            'title'=>'Error',
         );
-        // redirect("index.php");
+        redirect("index.php");
     }
 }
 if(isset($_POST['submit'])){
@@ -42,8 +41,7 @@ if(isset($_POST['submit'])){
 	$sub_title=get_safe_value($_POST['sub_title']);
 	$button_text=get_safe_value($_POST['button_text']);
 	$button_link=get_safe_value($_POST['button_link']);
-	$dept_id=get_safe_value($_POST['dept_id']);
-    $user_id=$_SESSION['ADMIN_ID'];
+    $user_id=$_SESSION['DEPT_ADMIN_ID'];
     $added_on=time();
     if($id==''){
         $id=uniqid();
@@ -59,7 +57,7 @@ if(isset($_POST['submit'])){
             if(isset($img)){
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_DEPT_SLIDER_IMAGE.$image);
-                $sql="INSERT INTO `dept_sliders` (`id`, `title`,`image`,`dept`, `sub_title`,`button_text`,`button_link`, `added_on`,`updated_on`, `added_by`, `status`) VALUES 
+                echo $sql="INSERT INTO `dept_sliders` (`id`, `title`,`image`,`dept`, `sub_title`,`button_text`,`button_link`, `added_on`,`updated_on`, `added_by`, `status`) VALUES 
                                             ('$id', '$title',  '$image', '$dept_id', '$sub_title','$button_text','$button_link', '$added_on', '','$user_id', '1')";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
@@ -89,7 +87,7 @@ if(isset($_POST['submit'])){
             if(isset($img)){
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_DEPT_SLIDER_IMAGE.$image);
-                $sql="update `dept_sliders` set  `title`='$title', `image`='$image',  `dept`='$dept_id', `sub_title`='$sub_title',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
+                $sql="update `dept_sliders` set  `title`='$title', `image`='$image',  `sub_title`='$sub_title',`updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
                         'type'=>'success',
@@ -103,7 +101,7 @@ if(isset($_POST['submit'])){
                 }
             }
         }else{
-            $sql="update `dept_sliders` set  `title`='$title', `sub_title`='$sub_title', `dept`='$dept_id', `updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
+            $sql="update `dept_sliders` set  `title`='$title', `sub_title`='$sub_title', `updated_on`='$updated_on',`added_by`='$user_id' where md5(id)='$id'";
             if(mysqli_query($con,$sql)){
                 $_SESSION['TOASTR_MSG']=array(
                     'type'=>'success',
@@ -160,21 +158,6 @@ if(isset($_POST['submit'])){
                                     <label>Button Link</label>
                                     <input type="text"  placeholder="Enter Button Link" class="form-control" name="button_link" id="button_link"
                                         value="<?php echo $button_link?>">
-                                </div>
-                                <div class="col-xl-12 col-lg-12 col-12 form-group">
-                                    <label>Dept *</label>
-                                    <select class="form-control select2" name="dept_id" required>
-                                        <?php
-                                        $res=mysqli_query($con,"SELECT * FROM `depts_lab_list` where status='1'");
-                                        while($row=mysqli_fetch_assoc($res)){
-                                            if($row['short_form']==$dept_id){
-                                                echo "<option selected='selected' value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
-                                            }else{
-                                                echo "<option value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
-                                            }                                                        
-                                        }
-                                        ?>
-                                    </select>
                                 </div>
                                 <div class="col-lg-12 col-12 form-group">
                                     <div class="col-sm-12 img-body">

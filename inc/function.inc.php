@@ -177,6 +177,7 @@ function getAvailableBooksCount($book_id){
 	  return $row['number'];
 	}
 } 
+
 function gettotalstudent($gender=""){
 	global $con;
     $add_sql="";
@@ -184,6 +185,15 @@ function gettotalstudent($gender=""){
         $add_sql="where gender='$gender'";
     }
 	$sql="SELECT count(DISTINCT id) as student FROM students $add_sql";
+	$res=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_assoc($res)){
+	  return $row['student'];
+	}
+}
+
+function getDeptWisetotalstudent($dept_id){
+	global $con;
+	$sql="SELECT count(DISTINCT students.id) as student from students,depts_lab_list where students.dept_id=depts_lab_list.id and depts_lab_list.short_form='$dept_id'";
 	$res=mysqli_query($con,$sql);
 	while($row=mysqli_fetch_assoc($res)){
 	  return $row['student'];
@@ -254,18 +264,26 @@ function getUsersIssuedBooksCount($user_id){
 	}
 } 
 
-function gettotalcount($type){
+function gettotalcount($type,$dept_id=""){
 	global $con;
-	$sql="SELECT count(DISTINCT id) as people FROM people where type='$type'";
+    $add_sql="";
+    if($dept_id!=""){
+        $add_sql="and people.dept='$dept_id'";
+    }
+	$sql="SELECT count(DISTINCT id) as people FROM people where type='$type' $add_sql";
 	$res=mysqli_query($con,$sql);
 	while($row=mysqli_fetch_assoc($res)){
 	  return $row['people'];
 	}
 }
 
-function getTotalNotice(){
+function getTotalNotice($dept_id=""){
 	global $con;
-	$sql="SELECT count(DISTINCT id) as count FROM notice where status='1'";
+    $add_sql="";
+    if($dept_id!=""){
+        $add_sql="and dept='$dept_id'";
+    }
+	$sql="SELECT count(DISTINCT id) as count FROM notice where status='1' $add_sql ";
 	$res=mysqli_query($con,$sql);
 	while($row=mysqli_fetch_assoc($res)){
 	  return $row['count'];

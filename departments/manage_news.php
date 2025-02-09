@@ -26,16 +26,15 @@ if(isset($_GET['id']) && $_GET['id']!=""){
            'body'=>'You don\'t have the permission to access the location!',    
            'title'=>'Error',
         );
-        // redirect("index.php");
+        redirect("index.php");
     }
 }
 if(isset($_POST['submit'])){
 	$title=get_safe_value($_POST['title']);
-	$dept=get_safe_value($_POST['dept']);
 	$details=$_POST['details'];
     $details = str_replace("'", "\'", $_POST['details']);  // Removes apostrophes
     $details = str_replace('"', '\"', $_POST['details']);  // Removes apostrophes
-    $user_id=$_SESSION['ADMIN_ID'];
+    $user_id=$_SESSION['DEPT_ADMIN_ID'];
     $added_on=time();
     $ref_id=uniqid();
     if($id==''){
@@ -53,7 +52,7 @@ if(isset($_POST['submit'])){
                 $image=time().'.jpg';
                 move_uploaded_file($_FILES['image']['tmp_name'],UPLOAD_NEWS_IMAGE.$image);
                 $sql="INSERT INTO `news` (`id`, `image`, `title`, `details`, `dept`, `added_on`, `added_by`, `status`) VALUES 
-                                        ('$id', '$image', '$title', '$details', '$dept', '$added_on', '$user_id', '1')";
+                                        ('$id', '$image', '$title', '$details', '$dept_id', '$added_on', '$user_id', '1')";
                 if(mysqli_query($con,$sql)){
                     $_SESSION['TOASTR_MSG']=array(
                         'type'=>'success',
@@ -145,22 +144,7 @@ if(isset($_POST['submit'])){
                                 <label>Details</label>
                                 <textarea name="details" class="full_input" id="details" cols="30" rows="10"><?php echo $details?></textarea>
                             </div>
-                                <div class="col-xl-12 col-lg-12 col-12 form-group">
-                                    <label>Dept *</label>
-                                    <select class="form-control select2" name="dept" required>
-                                        <?php
-                                        $res=mysqli_query($con,"SELECT * FROM `depts_lab_list` where status='1'");
-                                        while($row=mysqli_fetch_assoc($res)){
-                                            if($row['short_form']==$dept){
-                                                echo "<option selected='selected' value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
-                                            }else{
-                                                echo "<option value=".$row['short_form'].">".$row['name']." (".$row['short_form'].")</option>";
-                                            }                                                        
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            
+                                
                             <div class="col-lg-12 col-12 form-group">
                                     <div class="col-sm-12 img-body">
                                         <div class="center">

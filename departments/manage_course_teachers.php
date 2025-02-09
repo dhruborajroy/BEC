@@ -127,7 +127,7 @@ if(isset($_POST['submit'])){
                                 <label>Course Teachers *</label>
                                 <select class="form-control select2" name="teacher_id">
                                     <?php
-                                    $res=mysqli_query($con,"SELECT people.name,people.id FROM `people` where type='faculty' and status='1'");
+                                    $res=mysqli_query($con,"SELECT people.name,people.id FROM `people` where type='faculty' and status='1' and dept='$dept_id'");
                                     while($row=mysqli_fetch_assoc($res)){
                                         if($row['id']==$teacher_id){
                                             echo "<option selected='selected' value=".$row['id'].">".$row['name']."</option>";
@@ -138,6 +138,7 @@ if(isset($_POST['submit'])){
                                     ?>
                                 </select>
                             </div>
+                            <input type="hidden" value="<?php echo $dept_id?>" id="dept_id">
                             <div class="col-12-xxxl col-lg-12 col-12 form-group">
                                 <label for="visibility">Semester</label>
                                 <select class="form-control" name="semester" id="semester" >
@@ -201,6 +202,7 @@ if(isset($_POST['submit'])){
 
     window.onload = function() {
         var semester = $("#semester").val();
+        var dept_id = $("#dept_id").val();
         var selectedCourse = $("#course").attr("data-selected"); // Get previously selected course
 
        $.ajax({
@@ -208,7 +210,8 @@ if(isset($_POST['submit'])){
            method: "POST",
            data: { 
              semester: semester,
-             selected_course:selectedCourse 
+             selected_course:selectedCourse ,
+             dept_id:dept_id
            },
            success: function(response) {
                $("#course").html(response);
@@ -225,6 +228,7 @@ if(isset($_POST['submit'])){
         checkFormFields();
         // alert();
         var semester = $(this).val();
+        var dept_id = $("#dept_id").val();
         var selectedCourse = $("#course").attr("data-selected"); // Get previously selected course
 
         $.ajax({
@@ -232,7 +236,8 @@ if(isset($_POST['submit'])){
             method: "POST",
             data: {
                 semester: semester,
-                selected_course:selectedCourse 
+                selected_course: selectedCourse ,
+                dept_id: dept_id
             },
             success: function(response) {
                 $("#course").html(response);

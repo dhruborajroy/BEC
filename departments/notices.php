@@ -51,7 +51,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
                     </div>
                     <div class="notice-board-wrap">
                         <?php 
-                        $sql="select * from notice order by added_on desc";
+                        $sql="select * from notice where dept='$dept_id' order by added_on desc";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;

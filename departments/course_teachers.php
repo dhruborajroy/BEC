@@ -60,7 +60,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id'])){
                     <tbody id="myTable">
                         <?php 
                         
-                        $sql="select course_teachers.*, courses.course_name,courses.course_code,courses.semester,people.name as teacher_name from course_teachers,courses,people where courses.id=course_teachers.course_id and  course_teachers.teacher_id=people.id";
+                        $sql="select course_teachers.*, courses.course_name,courses.course_code,courses.semester,people.name as teacher_name from course_teachers,courses,people where courses.id=course_teachers.course_id and  course_teachers.teacher_id=people.id and people.dept='$dept_id'";
                         $res=mysqli_query($con,$sql);
                         if(mysqli_num_rows($res)>0){
                         $i=1;
