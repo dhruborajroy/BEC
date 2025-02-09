@@ -247,7 +247,7 @@ include('../../inc/function.inc.php');
                     maxRotation: 0,
                     fontColor: "#646464",
                     fontSize: 16,
-                    stepSize: 2,
+                    stepSize: 20,
                     padding: 20,
                 },
                 gridLines: { display: true, drawBorder: false, color: '#cccccc', borderDash: [5, 5] }

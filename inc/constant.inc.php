@@ -42,8 +42,8 @@ if(mysqli_num_rows($site_res)>0){
 	define('SIGNATURE_NAME',$site_res_row['signature_name']);
 	define('DESIGNATION',$site_res_row['name']);
 	define('SIGNATURE_IMAGE',$site_res_row['signature_image']);
-	define('SMTP_USERNAME',$site_res_row['smtp_username']);
-	define('SMTP_PASSWORD',$site_res_row['smtp_password']);
+	define('SMTP_USERNAME',"no-reply@bec.edu.bd");
+	define('SMTP_PASSWORD',"imctihnrankawxqg");
 	
 }else{	
 	define('LOGO',FRONT_SITE_PATH.'/images/gallery/logo.png');
@@ -65,24 +65,4 @@ if(mysqli_num_rows($site_res)>0){
 	define('SMTP_PASSPORT',"");
 }
 
-
-
-
-
-$curStr=$_SERVER['REQUEST_URI'];
-$curArr=explode('/',$curStr);
-$cur_path=$curArr[count($curArr)-1];
-$dashboard_active="";
-$payments_active="";
-$profile_active="";
-
-if($cur_path=='' || $cur_path=='dashboard'){
-	$dashboard_active="active";
-}elseif($cur_path=='' || $cur_path=='payments'){
-	$payments_active="active";
-}elseif($cur_path=='' || $cur_path=='profile'){
-	$profile_active="active";
-}else{
-
-}
 ?>

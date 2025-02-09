@@ -230,6 +230,107 @@ include("header.php");
 <!--=================================Why choose us -->
 <!--=================================Event -->
 <section class="space-ptb">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-xl-7 shadow">
+
+              <div class="row col-md-12 ">
+                  <div class="col-md-7">
+                     <div class="section-title">
+                        <h2 class="title">Latest Events</h2>
+                     </div>
+                  </div>
+                  <div class="col-md-5 text-md-right mb-4 mb-md-0">
+                     <a class="btn btn-primary btn-round" href="news">View All</a>
+                  </div>
+               </div>
+              <?php
+               $news_res=mysqli_query($con,"select * from news where status=1 limit 3");
+               if(mysqli_num_rows($news_res)>0){
+               while($news_res_row=mysqli_fetch_assoc($news_res)){
+               ?>
+               
+               
+               <div class="events p-4 bg-white border-radius mt-1">
+                  <div class="row">
+                     <div class="col-lg-3">
+                        <div class="events-img mb-4 mb-lg-0">
+                           <img class="img-fluid border-0" src="images/news/<?php echo $news_res_row['image']?>" >
+                        </div>
+                     </div>
+                     <div class="col-lg-6 align-self-center">
+                        <div class="events-content">
+                           <a href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>" class="text-dark h5"><?php echo $news_res_row['title']?></a>
+                           <div class="events-meta my-2">
+                              <ul class="list-unstyled mb-0 d-flex">
+                                 <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i> <?php echo date("d M Y",strtotime($news_res_row['added_on']))?></li>
+                              </ul>
+                           </div>
+                           <p class="text-dark mb-lg-0" style=" text-align: justify;text-justify: inter-word;">
+                              <?php 
+                                 $maxLength = 700;
+                                 
+                                 if (strlen($news_res_row['details']) > $maxLength) {
+                                    $truncatedString = substr_replace($news_res_row['details'], '...', $maxLength);
+                                 } else {
+                                    $truncatedString = $news_res_row['details'];
+                                 }
+                                 echo $truncatedString;
+                                 ?>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="col-lg-3 align-self-center text-lg-right text-left">
+                        <a class="btn btn-dark btn-round" href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>">View News</a>
+                     </div>
+                  </div>
+               </div>
+
+                <?php } }?>
+              </div>
+              <div class="col-xl-5 mt-xl-0 mt-4 shadow">
+               <div class="row col-md-12">
+                     <div class="col-md-7">
+                        <div class="section-title">
+                           <h3 class="title">Notices</h3>
+                        </div>
+                     </div>
+                     <div class="col-md-5 text-md-right mb-4 mb-md-0">
+                        <a class="btn btn-primary btn-round btm-sm" href="notice">View All Notice</a>
+                     </div>
+                  </div>
+
+                  <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollamount="5">
+                  <?php 
+                     $notice_res=mysqli_query($con,"select * from notice where status=1 order by added_on desc limit 3");
+                     if(mysqli_num_rows($notice_res)>0){
+                     while($notice_res_row=mysqli_fetch_assoc($notice_res)){?>
+                     <div class="blog-post d-flex align-items-center border border-radius mt-3">
+                        <div class="blog-date">
+                        <h3><?php echo date("d",$notice_res_row['added_on'])?></h3>
+                        <span><?php echo date("F",$notice_res_row['added_on'])?></span>
+                        </div>
+                        <div class="blog-contant">
+                        <h5 class="mt-0 mb-3"><?php echo $notice_res_row['title']?></h5>
+                        <div class="blog-meta mb-3">
+                           <ul class="list-unstyled mb-0 d-sm-flex">
+                              <li class="pr-sm-2"><a href="notice_files/<?php echo $notice_res_row['link']?>"><i class="fas fa-map-marker-alt text-primary pr-1"></i> Anaheim</a></li>
+                              </ul>
+                        </div>
+                        </div>
+                     </div>
+                     <?php } }?>
+                  </marquee>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="space-ptb">
    <div class="container">
       <div class="row">
          <div class="col-lg-12">
@@ -241,7 +342,7 @@ include("header.php");
                            <h2 class="title">Latest Events</h2>
                         </div>
                      </div>
-                     <div class="col-md-5 text-md-right mb-4 mb-md-0">
+                     <div class="col-md-5 text-md-right mb-4 mb-md-0 mr-3">
                         <a class="btn btn-primary btn-round" href="news">View All</a>
                      </div>
                   </div>
@@ -252,41 +353,41 @@ include("header.php");
                               $news_res=mysqli_query($con,"select * from news where status=1 limit 3");
                               if(mysqli_num_rows($news_res)>0){
                               while($news_res_row=mysqli_fetch_assoc($news_res)){
-                              ?>
-                           <div class="events shadow p-4 bg-white border-radius mt-1">
-                              <div class="row">
-                                 <div class="col-lg-3">
-                                    <div class="events-img mb-4 mb-lg-0">
-                                       <img class="img-fluid border-0" src="images/news/<?php echo $news_res_row['image']?>" >
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6 align-self-center">
-                                    <div class="events-content">
-                                       <a href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>" class="text-dark h5"><?php echo $news_res_row['title']?></a>
-                                       <div class="events-meta my-2">
-                                          <ul class="list-unstyled mb-0 d-flex">
-                                             <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i> <?php echo date("d M Y",strtotime($news_res_row['added_on']))?></li>
-                                          </ul>
+                                 ?>
+                              <div class="events shadow p-4 bg-white border-radius mt-1">
+                                 <div class="row">
+                                    <div class="col-lg-3">
+                                       <div class="events-img mb-4 mb-lg-0">
+                                          <img class="img-fluid border-0" src="images/news/<?php echo $news_res_row['image']?>" >
                                        </div>
-                                       <p class="text-dark mb-lg-0" style=" text-align: justify;text-justify: inter-word;">
-                                          <?php 
-                                             $maxLength = 700;
-                                             
-                                             if (strlen($news_res_row['details']) > $maxLength) {
-                                                $truncatedString = substr_replace($news_res_row['details'], '...', $maxLength);
-                                             } else {
-                                                $truncatedString = $news_res_row['details'];
-                                             }
-                                             echo $truncatedString;
-                                             ?>
-                                       </p>
                                     </div>
-                                 </div>
-                                 <div class="col-lg-3 align-self-center text-lg-right text-left">
-                                    <a class="btn btn-dark btn-round" href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>">View News</a>
+                                    <div class="col-lg-6 align-self-center">
+                                       <div class="events-content">
+                                          <a href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>" class="text-dark h5"><?php echo $news_res_row['title']?></a>
+                                          <div class="events-meta my-2">
+                                             <ul class="list-unstyled mb-0 d-flex">
+                                                <li class="mr-3"><i class="fas fa-calendar-alt pr-1"></i> <?php echo date("d M Y",strtotime($news_res_row['added_on']))?></li>
+                                             </ul>
+                                          </div>
+                                          <p class="text-dark mb-lg-0" style=" text-align: justify;text-justify: inter-word;">
+                                             <?php 
+                                                $maxLength = 700;
+                                                
+                                                if (strlen($news_res_row['details']) > $maxLength) {
+                                                   $truncatedString = substr_replace($news_res_row['details'], '...', $maxLength);
+                                                } else {
+                                                   $truncatedString = $news_res_row['details'];
+                                                }
+                                                echo $truncatedString;
+                                                ?>
+                                          </p>
+                                       </div>
+                                    </div>
+                                    <div class="col-lg-3 align-self-center text-lg-right text-left">
+                                       <a class="btn btn-dark btn-round" href="news-details.php?news_id=<?php echo md5($news_res_row['id'])?>">View News</a>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
                            <?php } }?>
                         </div>
                      </div>

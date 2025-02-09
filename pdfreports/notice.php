@@ -126,9 +126,10 @@ $mpdf=new \Mpdf\Mpdf([
 $mpdf->SetTitle('Notice Barisal Engineering College');
 $mpdf->SetFooter('Developed By Dhrubo Raj Roy');
 $mpdf->WriteHTML($html);
-if($row['link']==""){
-    $mpdf->output("../notice_files/".$file,'F');
-    $sql="UPDATE `notice` SET `link` = '$file' WHERE `notice`.`id` = '$notice_id'";
-    mysqli_query($con,$sql);
+$file_path = "../notice_files/" . $file;
+if (!file_exists($file_path)) { // Check if file does not exist
+    $mpdf->output($file_path, 'F'); // Save the PDF file
+    $sql = "UPDATE `notice` SET `link` = '$file' WHERE `id` = '$notice_id'";
+    mysqli_query($con, $sql); // Execute the query
 }
 redirect("../webadmin/notices");
